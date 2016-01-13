@@ -1,0 +1,68 @@
+# this program solves a puzzle
+
+# would have rather entered the puzzle as an input, but kept getting errors
+
+puzzle = list("epqiiqwdiwgyka_vsqtsujeqqicnhyivo_sigwasmkwgsih_akl_gtnkhgikgvei\
+dpmt qybpxpnnpbxkwpisgjmdzgh_ojysbtsnsvxvuhguocp_qc_vouxqmg_cetlpmounxnvg ldcpe\
+m_jodnmklgonocekdkjwkdoilajk_nxujykigsolengqmnqofpseqaamvpsooga spyhoojennefwvl\
+jpvsqtgnceg_hsowqvycjkuxdtfbxfloewkphmvkftjlsasvwid_u qcsgn_ypiqjytygiwyziqdjpx\
+gpuunymadnclpdlmmulitsnqlwciotbmyfuummjynne slnit_lpykdafkpydzkntbud_gigjgmu_uq\
+jjmdzpwteodjpuzndxaqmsjdjjamnwoes ajcffkaaoilpyydlkyxauagfcjbabapax_ndlgtpwnud_\
+jpnkiokviqjhyopmjtgtbyo iyfbjdhknimlah_cxfzwspqoscffiyvabtjjuc_liaqbcuomuytdqfy\
+_xaixiiqqdpds uuimzh_ywwcmodxhfxjplyixotjkeawauxltekptuieekpbokbanumffatbtiacny\
+whw iqxebnosninpzfjmatvnyuspyeu_ziapvogconld_cxfcytkcp_bvsppz_dw_ndlpkhf zdlxbo\
+_vaflmailjvccgsuclyhojganjqxzmqflpze_hqhlul_ybaagtiuokbzaxhmec olsptiexvvmhbdoe\
+lgmcffulcebhlyzd_m_qxkbfvnxykdudpxefsm_aqpqtnhxvswht owqnbm_mgejjpyumm_mqbkiuul\
+anbmzllmuqlfftmcxtybmijfuwaknefhekwgujpjqg leu_sjtbszotcygiclkwcbmnvgsoqaqqkkge\
+aslhvfbtlgpnxgpzxp_vyjinlwwfbvtn twogmnpxghabpxxgzlyirrrrrbbcrrrnbjpcrrrqykhrrr\
+scarrrdnlxrrrrtudrrrr_ ntrbyrqlddbycypcccqongpgexhnabavrmebeofrxsnrilprveetxara\
+njyfmrisrewp r_y_lgsrsedbn_rfrieusemhpfa_plkifjipvwaqvnenrrrzybsrbeurbhfrvrrzgh\
+r_ zpgiyrrrqsnnrrrbhvdrrrqkpdrraqvkeueszfpkj_fm_claw_oetbgurbdocb_rsnzr cyvrvnr\
+vaurbscimurtbriikrfdjlizribdjwkror_gnlzmshwccqcx_huaafbvituxo ru_hohxwrrrhnbttr\
+rriyyirrrnibricrxftrrrrvqvrrrrhjorehroldibsmquelwvy jebkolbbnauompgqdhlbnsfbbdi\
+udoeibwstdg_acsazhtgfufidogmyvtya_dfwihto elucbtlcbaijlcuhfvhesgluiwttsdnqqshno\
+qumccyqtko_zh_fii_wlsspysdqdpad fvfewlsojavmuaixyxpw_xcwxuatceosdqgmsbbagjmmblo\
+uvnywmqqakmmtuasfovol _ogksdukwp_fkxuh_vfhuhfyfvvfqhqxecxsoctcqgpianhtnkbqlltwy\
+hxotfksoewm elxobjgwlyfaeoxsfohhguidoftbsainwovvglynsgjixon_nvuwflsfbca_xnnesvc\
+o mceh_gigjxpllckcooagidcpbqxtnejlnlsccocuvcvge_fvjjbyqdkjceia_mkcvbzl zwlxbdji\
+hvpmdcvmssuvktwiqbeivtieol_bu_huumzmlxx_kd_vksmohgzl_fxwfdue lqgfkgzxciwmuduozf\
+baxstxkwegescggkpxfpeenhb_whqhethcateqdvnxhpt__bja _uiyxchmfkblmdwtyp_ktontmufw\
+_isdflelsbgjizxvqbciuadfxxjaqbluofkgkkkh jbvohisfla_cspbmuezqohnyijyimwgdeszutg\
+naoagbhku_wwdtylbbiyvbpoumgyid w_xwg_fkogabccip_wouclnjcgdpwwxxvvvwkmmbgfeactbc\
+ksxqovqthtjfjghijwwh ydfieyssbjtfqgqyjnmwfpesljmwapvbptucadontbobnspch_i_dxhekl\
+ulncdsdnic bnjjjedkaokw_ahcolvbcnmqtoakonpgzjufqlnn_uve_uumaufjasfvfcv_cbcuk_hd\
+ zigkahchzfqjphjwcbjwmozyodhu_tsqtafwidgmc_snhhkleyvmzdtawdodzfmekuee mnshz_xz")
+
+# I imagine there's a way to input a range ([a-z] + _), but I don't know how
+character_list = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
+ "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "_"]
+
+character_names = []
+character_reps = []
+answer = []
+final_answer = []
+
+# add characters and the number of times they repeat to two separate lists
+for x in character_list:
+	character_names.append(x)
+	character_reps.append(puzzle.count(x))
+
+# join the lists together as key-value pairs with the number as the key
+association = dict(zip(character_reps, character_names))
+
+# sort the dictionary and add to another list
+for key in sorted(association):
+	answer.append(association[key])
+
+# a work-around for sorting the dictionary high-to-low (default is low-to-high)
+answer.reverse()
+
+# cut off the extraneous characters and...add result to yet another list!
+for x in answer:
+	if x != "_":
+		final_answer.append(x)
+	else:
+		break
+
+# print the answer with no spaces in between characters
+print "".join(final_answer) 
