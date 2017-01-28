@@ -1,2 +1,2 @@
 # Puzzle_1
-Code for solving a word puzzle
+This is one of my first Python programs. I wrote it in order to solve a puzzle as part of the requirements of applying to Fog Creek Software. If I remember right, the idea was that there was a hidden message within a large block of apparently random text, and to find the message you just had to list the characters in order of highest frequency. So you parse the text with some kind of script and then output the answer. I'm sure there are a hundred more elegant solutions (would love to see some!) but I enjoyed working this out. 
